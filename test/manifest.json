@@ -1,0 +1,12 @@
+{
+  "name": "Daylite",
+  "builds": [
+    {
+      "chipFamily": "ESP32", 
+      "improv": false,
+      "parts": [
+        // Will populate in Step 6
+      ]
+    }
+  ]
+}
