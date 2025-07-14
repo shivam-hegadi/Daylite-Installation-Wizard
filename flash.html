@@ -61,25 +61,25 @@
             opacity: 0.8;
         }
 
-        .faq-section {
+        .faq-section, .next-steps-section {
             background: var(--background);
             padding: 2rem;
             border-radius: 15px;
             margin-top: 2rem;
         }
 
-        .faq-section h2 {
+        .faq-section h2, .next-steps-section h2 {
             color: var(--dark-mint);
             margin-bottom: 1.5rem;
             text-align: center;
         }
 
-        .troubleshooting-steps {
+        .troubleshooting-steps, .next-steps-list {
             list-style-type: none;
             padding-left: 0;
         }
 
-        .troubleshooting-steps li {
+        .troubleshooting-steps li, .next-steps-list li {
             background: white;
             margin-bottom: 1rem;
             padding: 1rem 1.5rem;
@@ -87,7 +87,7 @@
             box-shadow: 0 2px 8px rgba(149, 157, 165, 0.1);
         }
 
-        .troubleshooting-steps li strong {
+        .troubleshooting-steps li strong, .next-steps-list li strong {
             color: var(--dark-mint);
             display: block;
             margin-bottom: 0.5rem;
@@ -166,6 +166,14 @@
             background: var(--secondary-mint);
             border-radius: 50%;
         }
+
+        .gesture-icon {
+            display: block;
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: var(--dark-mint);
+        }
     </style>
 </head>
 
@@ -204,6 +212,28 @@
         <div id="notSupported" style="display: none;">
             <h3>⚠️ Browser Not Supported</h3>
             <p>Your browser does not support the Web Serial API. Please use Google Chrome or Microsoft Edge.</p>
+        </div>
+
+        <div class="next-steps-section">
+            <h2>Next Steps After Installation</h2>
+            <ul class="next-steps-list">
+                <li>
+                    <strong>WiFi Connection Setup</strong>
+                    <ol style="margin-left: 1rem;">
+                        <li>Look for "WeatherBoxAP" in your WiFi networks</li>
+                        <li>Connect to the "WeatherBoxAP" network</li>
+                        <li>The configuration portal should open automatically</li>
+                        <li>If the portal doesn't open, navigate to: <a href="http://192.168.4.1">http://192.168.4.1</a></li>
+                    </ol>
+                </li>
+                <li>
+                    <strong>Menu Navigation Guide</strong>
+                    <div class="gesture-icon">↓</div>
+                    <p>Swipe DOWN to open the menu</p>
+                    <div class="gesture-icon">↑</div>
+                    <p>Swipe UP to close the menu</p>
+                </li>
+            </ul>
         </div>
 
         <div class="faq-section">
