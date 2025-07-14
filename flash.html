@@ -1,24 +1,174 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daylite Firmware Installation</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+    <style>
+        :root {
+            --primary-mint: #98ff98;
+            --secondary-mint: #5cdb95;
+            --dark-mint: #379683;
+            --background: #f7fcf9;
+            --text: #05386b;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(149, 157, 165, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-mint);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--dark-mint);
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            color: var(--text);
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .installation-section {
+            background: var(--background);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .note {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(152, 255, 152, 0.2);
+            border-left: 4px solid var(--secondary-mint);
+            border-radius: 4px;
+        }
+
+        .note span {
+            color: var(--dark-mint);
+            font-size: 0.9rem;
+        }
+
+        #notSupported {
+            background: #ffe5e5;
+            color: #d63031;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* Custom styles for the ESP Web Install Button */
+        esp-web-install-button::part(button) {
+            background-color: var(--secondary-mint);
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        esp-web-install-button::part(button):hover {
+            background-color: var(--dark-mint);
+            transform: translateY(-2px);
+        }
+
+        .steps {
+            margin: 2rem 0;
+            padding: 0 1rem;
+        }
+
+        .step {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .step::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: var(--secondary-mint);
+            border-radius: 50%;
+        }
+    </style>
+</head>
 
 <body>
-    <h1>Sample project for demoing ESP Web Tools</h1>
+    <div class="container">
+        <div class="header">
+            <h1>Daylite Firmware Installation</h1>
+            <p class="subtitle">Welcome to the Daylite firmware installation wizard</p>
+        </div>
 
-    <div id="main" style="display: none;">
+        <div id="main" style="display: none;">
+            <div class="steps">
+                <div class="step">
+                    <h3>Step 1: Connect Your Device</h3>
+                    <p>Plug your Daylite device into your computer using a USB cable.</p>
+                </div>
+                <div class="step">
+                    <h3>Step 2: Install Firmware</h3>
+                    <p>Click the install button below and follow the prompts to select your device.</p>
+                </div>
+            </div>
 
-        <br>
-        <script
-            type="module"
-            src="https://unpkg.com/esp-web-tools@7.3.1/dist/web/install-button.js?module">
-        </script>
-        <esp-web-install-button id="installButton" manifest="test/manifest.json"></esp-web-install-button>        <br>
-        <span>NOTE: Make sure to close anything using your devices com port (e.g. Serial monitor)</span>
+            <div class="installation-section">
+                <script
+                    type="module"
+                    src="https://unpkg.com/esp-web-tools@7.3.1/dist/web/install-button.js?module">
+                </script>
+                <esp-web-install-button id="installButton" manifest="test/manifest.json"></esp-web-install-button>
+                
+                <div class="note">
+                    <span>⚠️ NOTE: Make sure to close any applications using your device's COM port (e.g., Serial monitor)</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="notSupported" style="display: none;">
+            <h3>⚠️ Browser Not Supported</h3>
+            <p>Your browser does not support the Web Serial API. Please use Google Chrome or Microsoft Edge.</p>
+        </div>
     </div>
-    <div id="notSupported" style="display: none;">
-        Your browser does not support the Web Serial API. Try Chrome
-    </div>
-    
 
     <script>
         if(navigator.serial){
@@ -29,7 +179,5 @@
             document.getElementById("main").style.display = 'none';
         }
     </script>
-
 </body>
-
 </html>
