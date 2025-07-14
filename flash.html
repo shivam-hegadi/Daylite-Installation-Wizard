@@ -61,38 +61,42 @@
             opacity: 0.8;
         }
 
-        .info-panel {
-            background: linear-gradient(to right, var(--primary-mint), var(--secondary-mint));
-            padding: 1.5rem;
-            border-radius: 12px;
+        .faq-section {
+            background: var(--background);
+            padding: 2rem;
+            border-radius: 15px;
             margin-bottom: 2rem;
-            color: var(--text);
-            box-shadow: 0 4px 12px rgba(92, 219, 149, 0.2);
         }
 
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-
-        .info-item {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 1rem;
-            border-radius: 8px;
-        }
-
-        .info-label {
-            font-size: 0.9rem;
+        .faq-section h2 {
             color: var(--dark-mint);
-            font-weight: 500;
-            margin-bottom: 0.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
         }
 
-        .info-value {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text);
+        .troubleshooting-steps {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .troubleshooting-steps li {
+            background: white;
+            margin-bottom: 1rem;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(149, 157, 165, 0.1);
+        }
+
+        .troubleshooting-steps li strong {
+            color: var(--dark-mint);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .troubleshooting-steps ul {
+            list-style-type: disc;
+            padding-left: 2rem;
+            margin-top: 0.5rem;
         }
 
         .installation-section {
@@ -172,24 +176,49 @@
             <p class="subtitle">Welcome to the Daylite firmware installation wizard</p>
         </div>
 
-        <div class="info-panel">
-            <div class="info-grid">
-                <div class="info-item">
-                    <div class="info-label">Current Date and Time (UTC)</div>
-                    <div class="info-value">2025-07-14 20:43:38</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label">Current User's Login</div>
-                    <div class="info-value">shivam-hegadi</div>
-                </div>
-            </div>
+        <div class="faq-section">
+            <h2>Common Installation Issues & Solutions</h2>
+            <ul class="troubleshooting-steps">
+                <li>
+                    <strong>Port Selection</strong>
+                    When selecting a port, make sure to choose the one labeled "USB Serial" from the dropdown menu.
+                </li>
+                
+                <li>
+                    <strong>First-Time Installation</strong>
+                    Some devices require manual activation of flash mode:
+                    <ul>
+                        <li>Hold down the RST button while starting the installation process</li>
+                        <li>Alternative method: Hold BOOT button → Press & release RST → Release BOOT</li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <strong>USB Connection Issues</strong>
+                    For devices with multiple USB ports:
+                    <ul>
+                        <li>If your device has both USB-C and Micro-USB, try both connections</li>
+                        <li>Some models only accept updates through specific ports</li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <strong>Connection Problems</strong>
+                    If the installation gets stuck:
+                    <ul>
+                        <li>Try using a different USB cable</li>
+                        <li>Default cables may not be reliable for updates</li>
+                        <li>Use a high-quality data transfer cable</li>
+                    </ul>
+                </li>
+            </ul>
         </div>
 
         <div id="main" style="display: none;">
             <div class="steps">
                 <div class="step">
                     <h3>Step 1: Connect Your Device</h3>
-                    <p>Plug your ESP32 CYD device into your computer using a USB cable.</p>
+                    <p>Plug your Daylite device into your computer using a USB cable.</p>
                 </div>
                 <div class="step">
                     <h3>Step 2: Install Firmware</h3>
