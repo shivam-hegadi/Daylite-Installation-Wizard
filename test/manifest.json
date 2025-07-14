@@ -5,7 +5,7 @@
       "chipFamily": "ESP32", 
       "improv": false,
       "parts": [
-        { "path": "FinalDaylite.ino.bin", "offset": 176 },
+        { "path": "FinalDaylite.ino.bin", "offset": 65536 },
         { "path": "FinalDaylite.ino.bootloader.bin", "offset": 4096 },
         { "path": "FinalDaylite.ino.partitions.bin", "offset": 32768 },
         { "path": "boot_app0.bin", "offset": 57344 },
