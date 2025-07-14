@@ -1,43 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Daylite Installation Wizard</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
-        }
-        h1 {
-            color: #223a5c;
-        }
-        .container {
-            margin-top: 30px;
-        }
-    </style>
-</head>
+
+
 <body>
-    <h1>Daylite Weather Display</h1>
-    <p>One-click firmware installer for your ESP32 touchscreen display</p>
-    
-    <div class="container">
-        <script type="module" src="https://unpkg.com/esp-web-tools@3.4.2/dist/web/install-button.js?module"></script>
-        <esp-web-install-button 
-            manifest="firmware/manifest.json"
-            install-text="Install Daylite Firmware"
-            class="install-button"
-        ></esp-web-install-button>
+    <h1>Sample project for demoing ESP Web Tools</h1>
+
+    <div id="main" style="display: none;">
+
+        <br>
+        <script
+            type="module"
+            src="https://unpkg.com/esp-web-tools@7.3.1/dist/web/install-button.js?module">
+        </script>
+        <esp-web-install-button id="installButton" manifest="webflash/manifest.json"></esp-web-install-button>
+        <br>
+        <span>NOTE: Make sure to close anything using your devices com port (e.g. Serial monitor)</span>
+    </div>
+    <div id="notSupported" style="display: none;">
+        Your browser does not support the Web Serial API. Try Chrome
     </div>
     
+
     <script>
-        // Style the install button
-        const button = document.querySelector('.install-button');
-        button.style.setProperty('--esp-tools-button-background', '#223a5c');
-        button.style.setProperty('--esp-tools-button-color', 'white');
-        button.style.setProperty('--esp-tools-button-font', '16px Arial');
-        button.style.setProperty('--esp-tools-button-padding', '12px 24px');
+        if(navigator.serial){
+            document.getElementById("notSupported").style.display = 'none';
+            document.getElementById("main").style.display = 'block';
+        } else {
+            document.getElementById("notSupported").style.display = 'block';
+            document.getElementById("main").style.display = 'none';
+        }
     </script>
+
 </body>
+
 </html>
