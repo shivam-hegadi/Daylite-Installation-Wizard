@@ -61,11 +61,45 @@
             opacity: 0.8;
         }
 
+        .info-panel {
+            background: linear-gradient(to right, var(--primary-mint), var(--secondary-mint));
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            color: var(--text);
+            box-shadow: 0 4px 12px rgba(92, 219, 149, 0.2);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .info-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .info-label {
+            font-size: 0.9rem;
+            color: var(--dark-mint);
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .info-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
         .faq-section {
             background: var(--background);
             padding: 2rem;
             border-radius: 15px;
-            margin-bottom: 2rem;
+            margin-top: 2rem;
         }
 
         .faq-section h2 {
@@ -176,6 +210,49 @@
             <p class="subtitle">Welcome to the Daylite firmware installation wizard</p>
         </div>
 
+        <div class="info-panel">
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">Current Date and Time (UTC)</div>
+                    <div class="info-value">2025-07-14 20:58:59</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Current User's Login</div>
+                    <div class="info-value">shivam-hegadi</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="main" style="display: none;">
+            <div class="steps">
+                <div class="step">
+                    <h3>Step 1: Connect Your Device</h3>
+                    <p>Plug your Daylite device into your computer using a USB cable.</p>
+                </div>
+                <div class="step">
+                    <h3>Step 2: Install Firmware</h3>
+                    <p>Click the install button below and follow the prompts to select your device.</p>
+                </div>
+            </div>
+
+            <div class="installation-section">
+                <script
+                    type="module"
+                    src="https://unpkg.com/esp-web-tools@7.3.1/dist/web/install-button.js?module">
+                </script>
+                <esp-web-install-button id="installButton" manifest="test/manifest.json"></esp-web-install-button>
+                
+                <div class="note">
+                    <span>⚠️ NOTE: Make sure to close any applications using your device's COM port (e.g., Serial monitor)</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="notSupported" style="display: none;">
+            <h3>⚠️ Browser Not Supported</h3>
+            <p>Your browser does not support the Web Serial API. Please use Google Chrome or Microsoft Edge.</p>
+        </div>
+
         <div class="faq-section">
             <h2>Common Installation Issues & Solutions</h2>
             <ul class="troubleshooting-steps">
@@ -212,36 +289,6 @@
                     </ul>
                 </li>
             </ul>
-        </div>
-
-        <div id="main" style="display: none;">
-            <div class="steps">
-                <div class="step">
-                    <h3>Step 1: Connect Your Device</h3>
-                    <p>Plug your Daylite device into your computer using a USB cable.</p>
-                </div>
-                <div class="step">
-                    <h3>Step 2: Install Firmware</h3>
-                    <p>Click the install button below and follow the prompts to select your device.</p>
-                </div>
-            </div>
-
-            <div class="installation-section">
-                <script
-                    type="module"
-                    src="https://unpkg.com/esp-web-tools@7.3.1/dist/web/install-button.js?module">
-                </script>
-                <esp-web-install-button id="installButton" manifest="test/manifest.json"></esp-web-install-button>
-                
-                <div class="note">
-                    <span>⚠️ NOTE: Make sure to close any applications using your device's COM port (e.g., Serial monitor)</span>
-                </div>
-            </div>
-        </div>
-
-        <div id="notSupported" style="display: none;">
-            <h3>⚠️ Browser Not Supported</h3>
-            <p>Your browser does not support the Web Serial API. Please use Google Chrome or Microsoft Edge.</p>
         </div>
     </div>
 
